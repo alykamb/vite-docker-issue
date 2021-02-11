@@ -1,0 +1,19 @@
+# for local development
+version: '3.7'
+
+services:
+    app:
+        container_name: vite
+        build:
+            context: .
+            dockerfile: dev.Dockerfile
+        ports:
+            - 3001:3001
+            - 33440:33440
+        stdin_open: true
+        tty: true
+        volumes:
+            - '.:/srv/www'
+            - /srv/www/node_modules/
+        command: yarn start
+
